@@ -33,13 +33,17 @@ def claude_api(prompt):
             "content-type": "application/json",
         },
         json={
-            "model": "claude-opus-4-5",
+            "model": "claude-haiku-4-5-20251001",
             "max_tokens": 1500,
             "messages": [{"role": "user", "content": prompt}]
         },
         timeout=60
     )
     data = response.json()
+    print(f"API yaniti: {data}")
+    if "content" not in data:
+        print(f"Hata detayi: {data}")
+        raise Exception(f"API hatasi: {data}")
     text = data["content"][0]["text"].strip()
     text = text.replace("```json", "").replace("```", "").strip()
     return text
