@@ -39,12 +39,9 @@ def claude_api(prompt):
         },
         timeout=60
     )
+    print(f"STATUS: {response.status_code}")
+    print(f"YANIT: {response.text[:300]}")
     data = response.json()
-    print(f"API RAW: {response.status_code} - {response.text[:500]}")
-    print(f"API yaniti: {data}")
-    if "content" not in data:
-        print(f"Hata detayi: {data}")
-        raise Exception(f"API hatasi: {data}")
     text = data["content"][0]["text"].strip()
     text = text.replace("```json", "").replace("```", "").strip()
     return text
