@@ -40,6 +40,7 @@ def claude_api(prompt):
         timeout=60
     )
     data = response.json()
+    print(f"API RAW: {response.status_code} - {response.text[:500]}")
     print(f"API yaniti: {data}")
     if "content" not in data:
         print(f"Hata detayi: {data}")
