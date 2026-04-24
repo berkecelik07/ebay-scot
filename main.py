@@ -8,7 +8,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from datetime import datetime
-from anthropic import Anthropic
+import anthropic
 
 # ============================================================
 # AYARLAR — Buraya kendi bilgilerini gir
@@ -31,7 +31,7 @@ KATEGORILER = [
 MIN_KAR_ORANI = 0.40   # %40 minimum kâr
 # ============================================================
 
-client = Anthropic(api_key=ANTHROPIC_KEY)
+client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
 
 def urun_ara(kategori):
     """Claude AI ile düşük rekabetli ürün ara"""
